@@ -15,6 +15,7 @@ export const teamCommand = new Command('team')
 const teamWebsiteCommand = new Command('website')
   .description('Show or set team website')
   .argument('[website]', 'Team website URL (must include http:// or https://)')
+  .option('--json', 'Output in JSON format')
   .action(async (website: string | undefined, options: CommandOptions) => {
     if (website) {
       // Set website
@@ -24,8 +25,19 @@ const teamWebsiteCommand = new Command('website')
         const result = await updateTeamWebsite(website);
         
         spinner.succeed('Team website updated successfully');
-        console.log(chalk.green(`Website: ${result.website}`));
-        console.log(chalk.gray(`Updated: ${result.updated_at}`));
+        
+        if (options.json) {
+          console.log(JSON.stringify({
+            success: true,
+            data: {
+              website: result.website,
+              updated_at: result.updated_at
+            }
+          }, null, 2));
+        } else {
+          console.log(chalk.green(`Website: ${result.website}`));
+          console.log(chalk.gray(`Updated: ${result.updated_at}`));
+        }
         
       } catch (error: any) {
         ora().fail('Failed to update team website');
@@ -40,11 +52,22 @@ const teamWebsiteCommand = new Command('website')
         const result = await getTeamWebsite();
         
         spinner.succeed('Team website retrieved');
-        if (result.website) {
-          console.log(chalk.green(`Website: ${result.website}`));
-          console.log(chalk.gray(`Updated: ${result.updated_at}`));
+        
+        if (options.json) {
+          console.log(JSON.stringify({
+            success: true,
+            data: {
+              website: result.website || null,
+              updated_at: result.updated_at
+            }
+          }, null, 2));
         } else {
-          console.log(chalk.yellow('No website set for this team'));
+          if (result.website) {
+            console.log(chalk.green(`Website: ${result.website}`));
+            console.log(chalk.gray(`Updated: ${result.updated_at}`));
+          } else {
+            console.log(chalk.yellow('No website set for this team'));
+          }
         }
         
       } catch (error: any) {
