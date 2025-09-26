@@ -26,6 +26,21 @@ const getClient = () => {
   });
 };
 
+export async function getTeamWebsite(): Promise<TeamWebsiteData> {
+  try {
+    const client = getClient();
+    const response = await client.get<ApiResponse<TeamWebsiteData>>('/team/website');
+
+    if (!response.data.success) {
+      throw new Error('Failed to fetch team website');
+    }
+
+    return response.data.data;
+  } catch (error: any) {
+    throw handleApiError(error);
+  }
+}
+
 export async function updateTeamWebsite(website: string): Promise<TeamWebsiteData> {
   // Validate website URL format
   const websiteRegex = /^https?:\/\/.+\..+/;
