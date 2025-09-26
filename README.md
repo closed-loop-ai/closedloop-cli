@@ -150,11 +150,25 @@ The CLI stores configuration in `~/.closedloop/config.json`:
 }
 ```
 
-### Environment Variables
+### Environment Variables (Advanced)
+
+**For developers and CI/CD systems**, you can also set your API key as an environment variable instead of using the config file:
 
 ```bash
+# Set the API key as an environment variable
 export CLOSEDLOOP_API_KEY="your-api-key-here"
+
+# Now you can use the CLI without running 'cl config set'
+cl input "Customer feedback here"
 ```
+
+**When to use this:**
+- **CI/CD pipelines**: Set the API key in your deployment environment
+- **Docker containers**: Pass the API key as an environment variable
+- **Server scripts**: When running automated scripts on servers
+- **Multiple users**: When different users need different API keys on the same machine
+
+**Note:** The CLI will automatically use the environment variable if it's set, otherwise it falls back to the config file.
 
 ## 💡 Real-World Examples
 
