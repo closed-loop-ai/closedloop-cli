@@ -200,6 +200,8 @@ cl feedback 2ea8f556-052b-4f5c-bf86-833780b3d00d --json
 
 ### Team Website Management
 
+**Why set your product website?** ClosedLoop uses your product URL to learn about your product features, competitors, pricing, and positioning. This enables more accurate feedback attribution and product-specific insights. For example, if you're working on iPhone, use `https://apple.com/iphone` - this helps ClosedLoop understand that "camera quality" feedback is about iPhone cameras, not just any camera.
+
 #### Show Current Website
 ```bash
 cl team website
