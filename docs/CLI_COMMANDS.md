@@ -456,11 +456,14 @@ fi
 
 ### 5. Use Pagination for Large Datasets
 ```bash
-# Good
+# Good - increase limit for larger datasets
 cl input --page 1 --limit 50
 
-# Bad
-cl input  # Might show too much data
+# Also good - use default pagination
+cl input --page 2  # Shows 20 items per page (default)
+
+# Bad - trying to show too many at once
+cl input --limit 200  # Will be capped at 100 (max limit)
 ```
 
 ## Troubleshooting
