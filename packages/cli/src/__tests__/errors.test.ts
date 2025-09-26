@@ -81,7 +81,7 @@ describe('Error Utils', () => {
       };
       
       const result = handleApiError(mockError);
-      expect(result.message).toContain('Cannot connect to ClosedLoop servers');
+      expect(result.message).toContain('Cannot connect to ClosedLoop AI servers');
       expect(result.code).toBe(ERROR_CODES.CONNECTION_ERROR);
     });
 
