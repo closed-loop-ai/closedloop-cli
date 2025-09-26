@@ -1,0 +1,65 @@
+{
+  "name": "@closedloop-ai/cli",
+  "version": "0.2.0",
+  "description": "ClosedLoop CLI - AI-powered customer product feedback analysis tool",
+  "bin": {
+    "cl": "./packages/cli/dist/cli.js"
+  },
+  "scripts": {
+    "build": "npm run build:cli",
+    "build:cli": "cd packages/cli && npm run build",
+    "test": "npm run test:cli",
+    "test:cli": "cd packages/cli && npm test",
+    "lint": "npm run lint:cli",
+    "lint:cli": "cd packages/cli && npm run lint",
+    "clean": "npm run clean:cli",
+    "clean:cli": "cd packages/cli && npm run clean",
+    "release": "npm run build && npm run test && npm publish",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "cli",
+    "command-line",
+    "ai",
+    "feedback",
+    "analysis",
+    "closedloop",
+    "typescript",
+    "customer-feedback",
+    "product-insights",
+    "ai-analysis"
+  ],
+  "author": "ClosedLoop AI <team@closedloop.sh>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/closed-loop-ai/closedloop-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/closed-loop-ai/closedloop-cli/issues"
+  },
+  "homepage": "https://github.com/closed-loop-ai/closedloop-cli#readme",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "workspaces": [
+    "packages/cli"
+  ],
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "jest": "^29.0.0",
+    "@types/jest": "^29.0.0",
+    "eslint": "^8.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "prettier": "^3.0.0"
+  },
+  "files": [
+    "packages/cli/dist/**/*",
+    "README.md",
+    "LICENSE",
+    "CONTRIBUTING.md",
+    "docs/**/*"
+  ]
+}

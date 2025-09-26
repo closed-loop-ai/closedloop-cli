@@ -1,0 +1,42 @@
+{
+  "name": "@closedloop-ai/cli",
+  "version": "0.2.0",
+  "description": "ClosedLoop CLI - AI-powered customer product feedback analysis tool",
+  "main": "dist/cli.js",
+  "bin": {
+    "cl": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "lint": "eslint src/**/*.ts",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "commander": "^11.0.0",
+    "axios": "^1.6.0",
+    "chalk": "^4.1.2",
+    "ora": "^5.4.1",
+    "inquirer": "^8.2.6",
+    "table": "^6.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/inquirer": "^8.2.0",
+    "typescript": "^5.0.0",
+    "jest": "^29.0.0",
+    "ts-jest": "^29.0.0"
+  },
+  "keywords": [
+    "closedloop",
+    "cli",
+    "command-line",
+    "ai",
+    "feedback",
+    "analysis",
+    "customer-feedback",
+    "product-insights"
+  ],
+  "author": "ClosedLoop AI",
+  "license": "MIT"
+}
