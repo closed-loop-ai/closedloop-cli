@@ -5,6 +5,7 @@ import chalk from 'chalk';
 import { handleInputCommand } from './commands/input';
 import { handleFeedbackCommand } from './commands/feedback';
 import { configCommand } from './commands/config';
+import { teamCommand } from './commands/team';
 import { CliError, handleApiError } from './utils/errors';
 import { CommandOptions } from './types';
 
@@ -30,6 +31,9 @@ Commands:
   feedback                     List AI-generated feedback
   feedback <id>                Show specific feedback details
 
+  team                         Manage team settings
+  team website update <url>    Update team website
+
   config                       Show current configuration
   config set --api-key <key>   Set API key
 
@@ -42,6 +46,7 @@ Examples:
   $ cl input 74e3dd87-878f-41cf-8e5a-87527bbf7770
   $ cl feedback
   $ cl feedback 2ea8f556-052b-4f5c-bf86-833780b3d00d
+  $ cl team website update "https://example.com"
   $ cl config set --api-key your-api-key-here
 
 Pagination:
@@ -93,6 +98,9 @@ program
 
 // Add config command
 program.addCommand(configCommand);
+
+// Add team command
+program.addCommand(teamCommand);
 
 // Add version command
 program

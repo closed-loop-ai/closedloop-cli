@@ -6,6 +6,7 @@ Complete reference for all CLI commands, parameters, and user experience.
 
 - [Installation](#installation)
 - [Configuration](#configuration)
+- [How to Use API Keys](#how-to-use-api-keys)
 - [Input Commands](#input-commands)
 - [Feedback Commands](#feedback-commands)
 - [General Commands](#general-commands)
@@ -42,14 +43,24 @@ cl config set --api-key your-api-key-here
 ```bash
 cl config
 # Output:
-# Server URL: https://mcp.closedloop.sh (hardcoded)
-# Key: ********-****-****-****-************
+# ⚙️  Configuration:
+# ────────────────────────────────────────
+# API Key: ✓ Configured
+# Config File: /Users/jirikobelka/.closedloop/config.json
 ```
 
 ### JSON Configuration
 ```bash
 cl config --json
-# Output: {"apiKey":"your-api-key-here"}
+# Output: 
+# {
+#   "success": true,
+#   "data": {
+#     "apiKey": "test-key...",
+#     "configFile": "/Users/jirikobelka/.closedloop/config.json",
+#     "configured": true
+#   }
+# }
 ```
 
 ### Environment Variable
@@ -184,6 +195,52 @@ cl feedback 2ea8f556-052b-4f5c-bf86-833780b3d00d --json
 | `--json` | flag | No | Output in JSON format | `--json` |
 
 *Required only for detailed view
+
+## Team Commands
+
+### Update Team Website
+
+#### Basic Update
+```bash
+cl team website update "https://example.com"
+# Output: Team website updated successfully
+# Website: https://example.com
+# Updated: 2024-01-15T10:30:00Z
+```
+
+#### With Validation
+```bash
+cl team website update "https://mycompany.com"
+# Output: Team website updated successfully
+# Website: https://mycompany.com
+# Updated: 2024-01-15T10:30:00Z
+```
+
+### Team Management
+```bash
+cl team
+# Shows available team management commands
+```
+
+### Team Parameters
+
+| Parameter | Type | Required | Description | Example |
+|-----------|------|----------|-------------|---------|
+| `website` | string | Yes | Team website URL (must include http:// or https://) | `"https://example.com"` |
+
+### Team Error Handling
+
+#### Invalid Website URL
+```bash
+cl team website update "invalid-url"
+# Error: Invalid website URL format. Must include protocol (http:// or https://) and domain
+```
+
+#### Missing API Key
+```bash
+cl team website update "https://example.com"
+# Error: API key not configured. Run: cl config set --api-key <key>
+```
 
 ## General Commands
 
