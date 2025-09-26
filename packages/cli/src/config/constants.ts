@@ -1,6 +1,8 @@
+export const VERSION = '0.2.3';
+
 export const CONFIG = {
   API_BASE_URL: process.env.CLOSEDLOOP_API_URL || 'https://mcp.closedloop.sh',
-  USER_AGENT: 'closedloop-cli/0.2.0',
+  USER_AGENT: `closedloop-cli/${VERSION}`,
   MAX_RETRY_ATTEMPTS: 100,
   POLL_INTERVAL_MS: 3000,
   DEFAULT_PAGE_SIZE: 20,

@@ -8,6 +8,7 @@ import { configCommand } from './commands/config';
 import { teamCommand } from './commands/team';
 import { CliError, handleApiError } from './utils/errors';
 import { CommandOptions } from './types';
+import { VERSION } from './config/constants';
 
 // Create the main program
 const program = new Command();
@@ -15,10 +16,10 @@ const program = new Command();
 program
   .name('cl')
   .description('ClosedLoop AI CLI - AI-powered customer feedback analysis for product management')
-  .version('0.2.0')
+  .version(VERSION)
   .addHelpText('before', chalk.blue(`
 ╔══════════════════════════════════════════════════════════════════════════════╗
-║                        ClosedLoop AI CLI v0.2.0                            ║
+║                        ClosedLoop AI CLI v${VERSION}                            ║
 ║                    AI-Powered Customer Feedback Analysis                     ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 `))
@@ -107,7 +108,7 @@ program
   .command('version')
   .description('Show version information')
   .action(() => {
-    console.log(chalk.blue('ClosedLoop AI CLI v0.2.0'));
+    console.log(chalk.blue(`ClosedLoop AI CLI v${VERSION}`));
     console.log(chalk.gray('AI-Powered Customer Feedback Analysis'));
     console.log(chalk.gray('Get started: https://closedloop.sh'));
   });
