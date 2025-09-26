@@ -170,41 +170,31 @@ cl input "Customer feedback here"
 
 **Note:** The CLI will automatically use the environment variable if it's set, otherwise it falls back to the config file.
 
-## 💡 Real-World Examples
+## 💡 Simple Workflow
 
-### Customer Success Team
+Here's how to get started with ClosedLoop AI CLI:
+
 ```bash
-# Process support ticket feedback
-cl input "Customer can't find the export feature in the new UI" \
-  --title "Export Feature Missing" \
-  --customer "enterprise-123" \
-  --source "zendesk-ticket-456"
+# 1. Set your API key
+cl config set --api-key your-api-key-here
 
-# Get AI insights on customer satisfaction trends
-cl feedback --severity high
+# 2. Set your product website (helps AI understand your product)
+cl team website "https://yourproduct.com/feature"
+
+# 3. Submit customer feedback
+cl input "The new dashboard is confusing and hard to navigate"
+
+# 4. Check what feedback you've submitted
+cl input
+
+# 5. View AI analysis of your feedback
+cl feedback
+
+# 6. Get details on specific feedback
+cl feedback <feedback-id>
 ```
 
-### Product Manager
-```bash
-# Submit user research findings
-cl input "Users want better mobile experience - 80% of complaints are mobile-related" \
-  --title "Mobile UX Research" \
-  --customer "research-participant-789"
-
-# Analyze feature request patterns
-cl feedback --category "feature-request"
-```
-
-### Business Analyst
-```bash
-# Process survey responses
-cl input "NPS score dropped 15 points this quarter due to performance issues" \
-  --title "Q3 NPS Analysis" \
-  --customer "survey-respondent-101"
-
-# Get strategic insights for leadership
-cl feedback --priority high
-```
+That's it! ClosedLoop AI will automatically analyze your feedback and provide actionable insights.
 
 ## 📚 Documentation
 
