@@ -56,7 +56,7 @@ Configure your product's website URL to help ClosedLoop understand your product 
 cl team website "https://yourproduct.com/feature"
 ```
 
-**Why this matters:** ClosedLoop uses your product URL to learn about your product features, competitors, pricing, and positioning. This enables more accurate feedback attribution and product-specific insights. For example, if you're working on iPhone, use `https://apple.com/iphone` - this helps ClosedLoop understand that "camera quality" feedback is about iPhone cameras, not just any camera.
+**Why this matters:** ClosedLoop AI uses your product URL to learn about your product features, competitors, pricing, and positioning. This enables more accurate feedback attribution and product-specific insights. For example, if you're working on iPhone, use `https://apple.com/iphone` - this helps ClosedLoop AI understand that "camera quality" feedback is about iPhone cameras, not just any camera.
 
 ### Submit Your First Customer Feedback
 
