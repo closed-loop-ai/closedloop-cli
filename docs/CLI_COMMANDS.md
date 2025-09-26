@@ -9,6 +9,7 @@ Complete reference for all CLI commands, parameters, and user experience.
 - [How to Use API Keys](#how-to-use-api-keys)
 - [Input Commands](#input-commands)
 - [Feedback Commands](#feedback-commands)
+- [Team Commands](#team-commands)
 - [General Commands](#general-commands)
 - [Error Handling](#error-handling)
 - [Examples](#examples)
