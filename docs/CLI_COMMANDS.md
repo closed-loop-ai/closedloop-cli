@@ -198,22 +198,32 @@ cl feedback 2ea8f556-052b-4f5c-bf86-833780b3d00d --json
 
 ## Team Commands
 
-### Update Team Website
+### Team Website Management
 
-#### Basic Update
+#### Show Current Website
 ```bash
-cl team website update "https://example.com"
+cl team website
+# Output: Website: https://example.com
+# Updated: 2024-01-15T10:30:00Z
+```
+
+#### Set Team Website
+```bash
+cl team website "https://example.com"
 # Output: Team website updated successfully
 # Website: https://example.com
 # Updated: 2024-01-15T10:30:00Z
 ```
 
-#### With Validation
+#### JSON Output
 ```bash
-cl team website update "https://mycompany.com"
-# Output: Team website updated successfully
-# Website: https://mycompany.com
-# Updated: 2024-01-15T10:30:00Z
+# Show website in JSON format
+cl team website --json
+# Output: {"success": true, "data": {"website": "https://example.com", "updated_at": "2024-01-15T10:30:00Z"}}
+
+# Set website in JSON format
+cl team website "https://example.com" --json
+# Output: {"success": true, "data": {"website": "https://example.com", "updated_at": "2024-01-15T10:30:00Z"}}
 ```
 
 ### Team Management
@@ -226,19 +236,20 @@ cl team
 
 | Parameter | Type | Required | Description | Example |
 |-----------|------|----------|-------------|---------|
-| `website` | string | Yes | Team website URL (must include http:// or https://) | `"https://example.com"` |
+| `website` | string | No | Team website URL (must include http:// or https://) | `"https://example.com"` |
+| `--json` | flag | No | Output in JSON format | `--json` |
 
 ### Team Error Handling
 
 #### Invalid Website URL
 ```bash
-cl team website update "invalid-url"
+cl team website "invalid-url"
 # Error: Invalid website URL format. Must include protocol (http:// or https://) and domain
 ```
 
 #### Missing API Key
 ```bash
-cl team website update "https://example.com"
+cl team website "https://example.com"
 # Error: API key not configured. Run: cl config set --api-key <key>
 ```
 
