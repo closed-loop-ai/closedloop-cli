@@ -13,11 +13,11 @@ const program = new Command();
 
 program
   .name('cl')
-  .description('ClosedLoop CLI - AI-powered customer feedback analysis for product management')
+  .description('ClosedLoop AI CLI - AI-powered customer feedback analysis for product management')
   .version('0.2.0')
   .addHelpText('before', chalk.blue(`
 ╔══════════════════════════════════════════════════════════════════════════════╗
-║                          ClosedLoop CLI v0.2.0                              ║
+║                        ClosedLoop AI CLI v0.2.0                            ║
 ║                    AI-Powered Customer Feedback Analysis                     ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 `))
@@ -99,7 +99,7 @@ program
   .command('version')
   .description('Show version information')
   .action(() => {
-    console.log(chalk.blue('ClosedLoop CLI v0.2.0'));
+    console.log(chalk.blue('ClosedLoop AI CLI v0.2.0'));
     console.log(chalk.gray('AI-Powered Customer Feedback Analysis'));
     console.log(chalk.gray('Get started: https://closedloop.sh'));
   });

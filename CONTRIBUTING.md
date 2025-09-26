@@ -1,6 +1,6 @@
-# Contributing to ClosedLoop CLI
+# Contributing to ClosedLoop AI CLI
 
-Thank you for your interest in contributing to the ClosedLoop CLI! We welcome contributions from the community and are grateful for your help in making this project better.
+Thank you for your interest in contributing to the ClosedLoop AI CLI! We welcome contributions from the community and are grateful for your help in making this project better.
 
 ## 🚀 Getting Started
 
@@ -434,4 +434,4 @@ We especially welcome contributions in these areas:
 - **Email**: team@closedloop.sh
 - **GitHub**: [closed-loop-ai/closedloop-cli](https://github.com/closed-loop-ai/closedloop-cli)
 
-Thank you for contributing to the ClosedLoop CLI! 🎉
+Thank you for contributing to the ClosedLoop AI CLI! 🎉

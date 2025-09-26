@@ -179,7 +179,7 @@ function handleError(error: any, options: CommandOptions) {
     }, null, 2));
   } else {
     if (error.code === 'ENOTFOUND' || error.code === 'ECONNREFUSED') {
-      console.error(chalk.red('❌ Connection Error:'), 'Cannot connect to ClosedLoop servers');
+      console.error(chalk.red('❌ Connection Error:'), 'Cannot connect to ClosedLoop AI servers');
       console.log(chalk.black('\n💡 Check your internet connection and try again'));
     } else {
       console.error(chalk.red('❌ Error:'), error.message);

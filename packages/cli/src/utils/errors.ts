@@ -66,7 +66,7 @@ export function handleApiError(error: any): CliError {
     }
   } else if (error.code === 'ENOTFOUND' || error.code === 'ECONNREFUSED') {
     return new CliError(
-      'Cannot connect to ClosedLoop servers. Please check your internet connection.',
+      'Cannot connect to ClosedLoop AI servers. Please check your internet connection.',
       ERROR_CODES.CONNECTION_ERROR,
       1
     );

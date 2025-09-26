@@ -1,7 +1,7 @@
 {
   "name": "@closedloop-ai/cli",
   "version": "0.2.0",
-  "description": "ClosedLoop CLI - AI-powered customer product feedback analysis tool",
+  "description": "ClosedLoop AI CLI - AI-powered customer product feedback analysis tool",
   "bin": {
     "cl": "./packages/cli/dist/cli.js"
   },

@@ -1,4 +1,4 @@
-# ClosedLoop CLI
+# ClosedLoop AI CLI
 
 > Transform scattered customer product feedback into actionable strategic insights with AI-powered analysis
 
@@ -18,7 +18,7 @@
 
 **The result?** Critical customer product feedback get lost, patterns go unnoticed, and product decisions are made without data.
 
-## ✨ How ClosedLoop CLI Solves This
+## ✨ How ClosedLoop AI CLI Solves This
 
 **Transform chaos into clarity** with autonomous AI that:
 
@@ -48,16 +48,16 @@ npm install -g @closedloop-ai/cli
 cl config set --api-key your-api-key-here
 ```
 
-### Submit Your First Customer Product Feedback
+### Submit Your First Customer Feedback
 
 ```bash
-# Submit customer product feedback for AI analysis
+# Submit raw customer feedback for AI analysis
 cl input "The new dashboard is confusing and hard to navigate. I can't find the settings menu and the layout is cluttered."
 
-# Wait for AI to analyze and generate insights
+# Wait for AI to analyze and generate structured insights
 cl input "Customer complaint about performance issues" --wait
 
-# View all AI-generated insights
+# View all AI-generated customer product feedback
 cl feedback
 
 # Get detailed analysis of a specific insight
@@ -86,7 +86,7 @@ cl feedback 2ea8f556-052b-4f5c-bf86-833780b3d00d
 
 ## 📖 CLI Commands
 
-### Submit Customer Product Feedback
+### Submit Customer Feedback
 
 ```bash
 # Basic submission
@@ -104,10 +104,10 @@ cl input "Great product, love the new features!" \
 cl input "Customer complaint about performance" --wait
 ```
 
-### View AI-Generated Insights
+### View AI-Generated Customer Product Feedback
 
 ```bash
-# List all insights
+# List all structured insights
 cl feedback
 
 # View specific insight details
@@ -120,7 +120,7 @@ cl feedback --json | jq '.data[0].title'
 ### Manage Your Data
 
 ```bash
-# List all customer product feedback submitted
+# List all customer feedback submitted
 cl input
 
 # View specific feedback details
@@ -189,14 +189,14 @@ cl feedback --priority high
 
 ## 🎯 Why This Matters
 
-### Before ClosedLoop CLI
+### Before ClosedLoop AI CLI
 - ❌ **Scattered feedback** across 5+ different tools
 - ❌ **Manual analysis** taking 20+ hours per week
 - ❌ **Missed patterns** and critical insights
 - ❌ **Reactive decisions** based on incomplete data
 - ❌ **Lost revenue** from unaddressed customer needs
 
-### After ClosedLoop CLI
+### After ClosedLoop AI CLI
 - ✅ **Unified intelligence** from all feedback sources
 - ✅ **Automated analysis** with AI pattern recognition
 - ✅ **Proactive insights** delivered in real-time
@@ -260,6 +260,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Made with ❤️ by the ClosedLoop team**
+**Made with ❤️ by ClosedLoop AI**
 
 *Transform customer product feedback chaos into strategic product decisions with AI-powered insights.*

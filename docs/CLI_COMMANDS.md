@@ -1,4 +1,4 @@
-# ClosedLoop CLI Commands Reference
+# ClosedLoop AI CLI Commands Reference
 
 Complete reference for all CLI commands, parameters, and user experience.
 

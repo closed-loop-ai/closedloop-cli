@@ -22,7 +22,7 @@ To get started:
 Get your free API key at: https://closedloop.sh`,
   
   INVALID_API_KEY: '❌ Invalid API key. Get your free API key at https://closedloop.sh',
-  CONNECTION_ERROR: '❌ Connection Error: Cannot connect to ClosedLoop servers',
+  CONNECTION_ERROR: '❌ Connection Error: Cannot connect to ClosedLoop AI servers',
   CHECK_INTERNET: 'Check your internet connection and try again',
   GET_HELP: 'Get help: cl --help',
   PROCESSING_ERROR: '❌ Processing Error: Unable to process feedback',
