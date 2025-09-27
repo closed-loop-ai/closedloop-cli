@@ -166,7 +166,7 @@ async function showConfig(currentConfig: any, options: CommandOptions) {
     console.log(chalk.yellow('\n💡 Get started:'));
     console.log(chalk.black('   1. Get your free API key at: https://closedloop.sh'));
     console.log(chalk.black('   2. Run: cl config set-api-key <your-key>'));
-    console.log(chalk.black('   3. Submit your first input: cl input "Your feedback here"'));
+    console.log(chalk.black('   3. Ingest your first feedback: cl ingest "Your feedback here"'));
   }
 }
 

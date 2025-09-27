@@ -2,7 +2,7 @@
 
 import { Command } from 'commander';
 import chalk from 'chalk';
-import { handleInputCommand } from './commands/input';
+import { handleIngestCommand } from './commands/ingest';
 import { handleFeedbackCommand } from './commands/feedback';
 import { configCommand } from './commands/config';
 import { teamCommand } from './commands/team';
@@ -25,9 +25,9 @@ program
 `))
   .addHelpText('after', chalk.black(`
 Commands:
-  input [content]              Submit customer input for AI analysis
-  input                        List all customer inputs
-  input <id>                   Show specific input details
+  ingest [content]             Ingest customer feedback for AI analysis
+  ingest                       List all ingested feedback
+  ingest <id>                  Show specific ingested feedback details
 
   feedback                     List AI-generated feedback
   feedback <id>                Show specific feedback details
@@ -42,25 +42,25 @@ Commands:
   help [command]               Show help for a command
 
 Examples:
-  $ cl input "Dashboard is confusing"
-  $ cl input
-  $ cl input 74e3dd87-878f-41cf-8e5a-87527bbf7770
+  $ cl ingest "Dashboard is confusing"
+  $ cl ingest
+  $ cl ingest 74e3dd87-878f-41cf-8e5a-87527bbf7770
   $ cl feedback
   $ cl feedback 2ea8f556-052b-4f5c-bf86-833780b3d00d
   $ cl team website update "https://example.com"
   $ cl config set --api-key your-api-key-here
 
 Pagination:
-  $ cl input --page 2 --limit 10
+  $ cl ingest --page 2 --limit 10
   $ cl feedback --page 2
 
 Get API keys for free at https://closedloop.sh
 `));
 
-// Add input command
+// Add ingest command
 program
-  .command('input [content]')
-  .description('Submit customer input for AI analysis or list inputs')
+  .command('ingest [content]')
+  .description('Ingest customer feedback for AI analysis or list ingested feedback')
   .option('-t, --title <title>', 'Title for this input')
   .option('-u, --url <url>', 'Source URL (support ticket, survey, etc.)')
   .option('-c, --customer <id>', 'Customer identifier')
@@ -75,7 +75,7 @@ program
   .option('--search <query>', 'Search in input content')
   .action(async (content, options: CommandOptions) => {
     try {
-      await handleInputCommand(content, options);
+      await handleIngestCommand(content, options);
     } catch (error: any) {
       handleError(error, options);
     }
@@ -102,6 +102,31 @@ program.addCommand(configCommand);
 
 // Add team command
 program.addCommand(teamCommand);
+
+// Add backward compatibility alias for input command
+program
+  .command('input [content]')
+  .description('Alias for ingest command (deprecated)')
+  .option('-t, --title <title>', 'Title for this input')
+  .option('-u, --url <url>', 'Source URL (support ticket, survey, etc.)')
+  .option('-c, --customer <id>', 'Customer identifier')
+  .option('-n, --name <name>', 'Name of person who provided the input')
+  .option('-e, --email <email>', 'Email of person who provided the input')
+  .option('--interactive', 'Fill in details step by step')
+  .option('-w, --wait', 'Wait until processing is completed')
+  .option('--json', 'Output in JSON format')
+  .option('--page <number>', 'Page number for list', '1')
+  .option('--limit <number>', 'Items per page for list', '20')
+  .option('--status <status>', 'Filter by status (processing, completed, failed)')
+  .option('--search <query>', 'Search in input content')
+  .action(async (content, options: CommandOptions) => {
+    console.log(chalk.yellow('⚠️  "input" is deprecated. Use "ingest" instead.'));
+    try {
+      await handleIngestCommand(content, options);
+    } catch (error: any) {
+      handleError(error, options);
+    }
+  });
 
 // Add version command
 program

@@ -58,14 +58,14 @@ cl team website "https://yourproduct.com/feature"
 
 **Why this matters:** ClosedLoop AI uses your product URL to learn about your product features, competitors, pricing, and positioning. This enables more accurate feedback attribution and product-specific insights. For example, if you're working on iPhone, use `https://apple.com/iphone` - this helps ClosedLoop AI understand that "camera quality" feedback is about iPhone cameras, not just any camera.
 
-### Submit Your First Customer Feedback
+### Ingest Your First Customer Feedback
 
 ```bash
-# Submit raw customer feedback for AI analysis
-cl input "The new dashboard is confusing and hard to navigate. I can't find the settings menu and the layout is cluttered."
+# Ingest raw customer feedback for AI analysis
+cl ingest "The new dashboard is confusing and hard to navigate. I can't find the settings menu and the layout is cluttered."
 
 # Wait for AI to analyze and generate structured insights
-cl input "Customer complaint about performance issues" --wait
+cl ingest "Customer complaint about performance issues" --wait
 
 # View all AI-generated customer product feedback
 cl feedback
@@ -96,14 +96,14 @@ cl feedback 2ea8f556-052b-4f5c-bf86-833780b3d00d
 
 ## 📖 CLI Commands
 
-### Submit Customer Feedback
+### Ingest Customer Feedback
 
 ```bash
-# Basic submission
-cl input "The app crashes when I try to upload large files"
+# Basic ingestion
+cl ingest "The app crashes when I try to upload large files"
 
 # With metadata for better analysis
-cl input "Great product, love the new features!" \
+cl ingest "Great product, love the new features!" \
   --title "Positive Feedback" \
   --customer "customer-456" \
   --name "Jane Smith" \
@@ -111,7 +111,7 @@ cl input "Great product, love the new features!" \
   --url "https://support.example.com/ticket/789"
 
 # Wait for AI analysis to complete
-cl input "Customer complaint about performance" --wait
+cl ingest "Customer complaint about performance" --wait
 ```
 
 ### View AI-Generated Customer Product Feedback
@@ -130,14 +130,14 @@ cl feedback --json | jq '.data[0].title'
 ### Manage Your Data
 
 ```bash
-# List all customer feedback submitted
-cl input
+# List all customer feedback ingested
+cl ingest
 
 # View specific feedback details
-cl input <feedback-id>
+cl ingest <feedback-id>
 
 # Check processing status
-cl input <feedback-id> --status
+cl ingest <feedback-id> --status
 ```
 
 ## 🔧 Configuration
@@ -181,11 +181,11 @@ cl config set --api-key your-api-key-here
 # 2. Set your product website (helps AI understand your product)
 cl team website "https://yourproduct.com/feature"
 
-# 3. Submit customer feedback
-cl input "The new dashboard is confusing and hard to navigate"
+# 3. Ingest customer feedback
+cl ingest "The new dashboard is confusing and hard to navigate"
 
-# 4. Check what feedback you've submitted
-cl input
+# 4. Check what feedback you've ingested
+cl ingest
 
 # 5. View AI analysis of your feedback
 cl feedback

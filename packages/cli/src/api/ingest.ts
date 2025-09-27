@@ -22,7 +22,7 @@ const getClient = () => {
   });
 };
 
-export async function listInputs(page: number = 1, limit: number = 20): Promise<ListResponse<InputData>> {
+export async function listIngests(page: number = 1, limit: number = 20): Promise<ListResponse<InputData>> {
   try {
     const client = getClient();
     const response = await client.get('/inputs', { 
@@ -34,7 +34,7 @@ export async function listInputs(page: number = 1, limit: number = 20): Promise<
   }
 }
 
-export async function getInputDetail(id: string): Promise<InputData> {
+export async function getIngestDetail(id: string): Promise<InputData> {
   try {
     const client = getClient();
     const response = await client.get(`/inputs/${id}`);
@@ -44,7 +44,7 @@ export async function getInputDetail(id: string): Promise<InputData> {
   }
 }
 
-export async function getInputStatus(id: string): Promise<InputData> {
+export async function getIngestStatus(id: string): Promise<InputData> {
   try {
     const client = getClient();
     const response = await client.get(`/inputs/${id}`);

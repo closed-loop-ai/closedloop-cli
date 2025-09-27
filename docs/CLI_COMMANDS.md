@@ -70,18 +70,18 @@ export CLOSEDLOOP_API_KEY="your-api-key-here"
 cl config  # Will use environment variable
 ```
 
-## Input Commands
+## Ingest Commands
 
-### Submit Customer Product Feedback
+### Ingest Customer Product Feedback
 
-#### Basic Submission
+#### Basic Ingestion
 ```bash
-cl input "Your customer product feedback here"
+cl ingest "Your customer product feedback here"
 ```
 
 #### With Metadata
 ```bash
-cl input "The dashboard is confusing and hard to navigate" \
+cl ingest "The dashboard is confusing and hard to navigate" \
   --title "Dashboard UX Issues" \
   --customer "customer-123" \
   --name "John Doe" \
@@ -91,51 +91,51 @@ cl input "The dashboard is confusing and hard to navigate" \
 
 #### Wait for Processing
 ```bash
-cl input "Customer complaint about performance" --wait
+cl ingest "Customer complaint about performance" --wait
 # Shows real-time processing status
 ```
 
 #### JSON Output
 ```bash
-cl input "Great product, love the new features!" --json
+cl ingest "Great product, love the new features!" --json
 # Output: {"id":"74e3dd87-878f-41cf-8e5a-87527bbf7770","status":"submitted"}
 ```
 
-### List Customer Inputs
+### List Ingested Feedback
 
 #### Basic List
 ```bash
-cl input
-# Shows table of recent inputs
+cl ingest
+# Shows table of recent ingests
 ```
 
 #### With Pagination
 ```bash
-cl input --page 2 --limit 10
+cl ingest --page 2 --limit 10
 # Shows page 2 with 10 items per page
 ```
 
 #### JSON Output
 ```bash
-cl input --json
+cl ingest --json
 # Output: {"data":[...],"pagination":{...}}
 ```
 
-### View Specific Input
+### View Specific Ingest
 
 #### By ID
 ```bash
-cl input 74e3dd87-878f-41cf-8e5a-87527bbf7770
-# Shows detailed input information
+cl ingest 74e3dd87-878f-41cf-8e5a-87527bbf7770
+# Shows detailed ingest information
 ```
 
 #### JSON Output
 ```bash
-cl input 74e3dd87-878f-41cf-8e5a-87527bbf7770 --json
+cl ingest 74e3dd87-878f-41cf-8e5a-87527bbf7770 --json
 # Output: {"id":"...","content":"...","status":"..."}
 ```
 
-### Input Parameters
+### Ingest Parameters
 
 | Parameter | Type | Required | Description | Example |
 |-----------|------|----------|-------------|---------|
@@ -341,11 +341,11 @@ cl input "Test feedback"
 # 1. Configure API key
 cl config set --api-key your-api-key-here
 
-# 2. Submit customer product feedback
-cl input "The new dashboard is confusing and hard to navigate"
+# 2. Ingest customer product feedback
+cl ingest "The new dashboard is confusing and hard to navigate"
 
 # 3. Wait for AI analysis
-cl input "Customer complaint about performance" --wait
+cl ingest "Customer complaint about performance" --wait
 
 # 4. View AI-generated insights
 cl feedback
@@ -356,34 +356,34 @@ cl feedback 2ea8f556-052b-4f5c-bf86-833780b3d00d
 
 ### Advanced Workflow
 ```bash
-# 1. Submit with full metadata
-cl input "Great product, love the new features!" \
+# 1. Ingest with full metadata
+cl ingest "Great product, love the new features!" \
   --title "Positive Feedback" \
   --customer "enterprise-123" \
   --name "Jane Smith" \
   --email "jane@example.com" \
   --url "https://support.example.com/ticket/789"
 
-# 2. List all inputs with pagination
-cl input --page 1 --limit 20
+# 2. List all ingests with pagination
+cl ingest --page 1 --limit 20
 
 # 3. Get JSON output for scripting
 cl feedback --json | jq '.data[0].title'
 
-# 4. View specific input details
-cl input 74e3dd87-878f-41cf-8e5a-87527bbf7770 --json
+# 4. View specific ingest details
+cl ingest 74e3dd87-878f-41cf-8e5a-87527bbf7770 --json
 ```
 
 ### Scripting Examples
 ```bash
 #!/bin/bash
-# submit-feedback.sh
+# ingest-feedback.sh
 
-# Submit feedback and get ID
-ID=$(cl input "$1" --json | jq -r '.id')
+# Ingest feedback and get ID
+ID=$(cl ingest "$1" --json | jq -r '.id')
 
 # Wait for processing
-cl input "$ID" --wait
+cl ingest "$ID" --wait
 
 # Show results
 cl feedback
@@ -435,19 +435,19 @@ cl feedback --json | jq '.data[] | {id: .id, title: .title, status: .status}'
 ### 1. Use Descriptive Titles
 ```bash
 # Good
-cl input "The app crashes when uploading files" --title "File Upload Crash"
+cl ingest "The app crashes when uploading files" --title "File Upload Crash"
 
 # Bad
-cl input "App broken" --title "Issue"
+cl ingest "App broken" --title "Issue"
 ```
 
 ### 2. Include Customer Context
 ```bash
 # Good
-cl input "Feature request" --customer "enterprise-123" --name "John Doe"
+cl ingest "Feature request" --customer "enterprise-123" --name "John Doe"
 
 # Bad
-cl input "Feature request"
+cl ingest "Feature request"
 ```
 
 ### 3. Use JSON for Scripting
@@ -462,8 +462,8 @@ cl feedback | grep "Title"
 ### 4. Handle Errors Gracefully
 ```bash
 #!/bin/bash
-if ! cl input "$1" --wait; then
-  echo "Failed to submit feedback"
+if ! cl ingest "$1" --wait; then
+  echo "Failed to ingest feedback"
   exit 1
 fi
 ```
@@ -471,13 +471,13 @@ fi
 ### 5. Use Pagination for Large Datasets
 ```bash
 # Good - increase limit for larger datasets
-cl input --page 1 --limit 50
+cl ingest --page 1 --limit 50
 
 # Also good - use default pagination
-cl input --page 2  # Shows 20 items per page (default)
+cl ingest --page 2  # Shows 20 items per page (default)
 
 # Bad - trying to show too many at once
-cl input --limit 200  # Will be capped at 100 (max limit)
+cl ingest --limit 200  # Will be capped at 100 (max limit)
 ```
 
 ## Troubleshooting
