@@ -105,12 +105,12 @@ describe('Performance Tests', () => {
 describe('Edge Case Tests', () => {
   describe('Boundary Conditions', () => {
     it('should handle exactly maximum length input', () => {
-      const maxLengthInput = 'a'.repeat(10000);
+      const maxLengthInput = 'a'.repeat(50000);
       expect(() => validateInputContent(maxLengthInput)).not.toThrow();
     });
 
     it('should reject input one character over maximum', () => {
-      const tooLongInput = 'a'.repeat(10001);
+      const tooLongInput = 'a'.repeat(50001);
       expect(() => validateInputContent(tooLongInput)).toThrow();
     });
 
@@ -246,7 +246,7 @@ describe('Edge Case Tests', () => {
 
   describe('Error Recovery', () => {
     it('should recover from validation errors gracefully', () => {
-      const invalidInputs = ['', '   ', 'a'.repeat(10001)];
+      const invalidInputs = ['', '   ', 'a'.repeat(50001)];
       const validInputs = ['Valid input 1', 'Valid input 2', 'Valid input 3'];
 
       let errorCount = 0;

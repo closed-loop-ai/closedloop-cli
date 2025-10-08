@@ -167,7 +167,7 @@ export const generateRandomUuid = (): string => {
 
 // Performance test data
 export const performanceTestData = {
-  largeInput: 'a'.repeat(10000),
+  largeInput: 'a'.repeat(50000),
   manyInputs: createTestInputs(1000),
   manyFeedbacks: createTestFeedbacks(500),
   longUuid: generateRandomUuid() + generateRandomUuid()

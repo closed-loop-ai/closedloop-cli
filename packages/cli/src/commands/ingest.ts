@@ -2,6 +2,8 @@ import chalk from 'chalk';
 import ora from 'ora';
 import inquirer from 'inquirer';
 import { table } from 'table';
+import { promises as fs } from 'fs';
+import path from 'path';
 import { submitFeedback } from '../api/feedback';
 import { listIngests as listIngestsAPI, getIngestDetail, getIngestStatus } from '../api/ingest';
 import { CommandOptions, InputData, ListResponse } from '../types';
@@ -13,6 +15,25 @@ const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12
 
 // Main ingest command handler
 export async function handleIngestCommand(content: string | undefined, options: CommandOptions) {
+  // Handle file option
+  if (options.file) {
+    try {
+      const filePath = path.resolve(options.file);
+      const fileContent = await fs.readFile(filePath, 'utf8');
+      
+      if (!fileContent.trim()) {
+        console.error(chalk.red('Error: File is empty'));
+        return;
+      }
+      
+      // Use file content as the content parameter
+      content = fileContent;
+    } catch (error: any) {
+      console.error(chalk.red(`Error reading file: ${error.message}`));
+      return;
+    }
+  }
+
   // Check for common command mistakes
   if (content && ['list', 'show', 'status', 'help'].includes(content.toLowerCase())) {
     console.log(chalk.yellow('💡 Did you mean one of these commands?'));
@@ -20,9 +41,11 @@ export async function handleIngestCommand(content: string | undefined, options: 
     console.log(chalk.blue('  cl ingest') + chalk.black('                    # List all ingested feedback'));
     console.log(chalk.blue('  cl ingest <id>') + chalk.black('              # Show specific ingested feedback details'));
     console.log(chalk.blue('  cl ingest "your content"') + chalk.black('     # Ingest new feedback for analysis'));
+    console.log(chalk.blue('  cl ingest --file <path>') + chalk.black('      # Ingest feedback from file'));
     console.log(chalk.black(''));
     console.log(chalk.gray('Examples:'));
     console.log(chalk.gray('  cl ingest "Dashboard is confusing"'));
+    console.log(chalk.gray('  cl ingest --file feedback.txt'));
     console.log(chalk.gray('  cl ingest 74e3dd87-878f-41cf-8e5a-87527bbf7770'));
     return;
   }

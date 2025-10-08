@@ -39,7 +39,7 @@ describe('Validation Utils', () => {
     });
 
     it('should reject content that is too long', () => {
-      const longContent = 'a'.repeat(10001);
+      const longContent = 'a'.repeat(50001);
       expect(() => validateInputContent(longContent)).toThrow(CliError);
     });
   });

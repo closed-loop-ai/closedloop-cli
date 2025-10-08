@@ -26,6 +26,14 @@ program
   .addHelpText('after', chalk.black(`
 Commands:
   ingest [content]             Ingest customer feedback for AI analysis
+    --customer <id>            Customer identifier
+    --name <name>              Reporter name
+    --email <email>            Reporter email
+    --title <title>            Title for this input
+    --url <url>                Source URL (support ticket, survey, etc.)
+    --file <path>              Read content from file
+    --wait                     Wait for processing to complete
+    --interactive              Fill in details step by step
   ingest                       List all ingested feedback
   ingest <id>                  Show specific ingested feedback details
 
@@ -43,6 +51,9 @@ Commands:
 
 Examples:
   $ cl ingest "Dashboard is confusing"
+  $ cl ingest "App crashes" --customer "user-123" --wait
+  $ cl ingest --file feedback.txt --customer "user-456"
+  $ cl ingest --interactive
   $ cl ingest
   $ cl ingest 74e3dd87-878f-41cf-8e5a-87527bbf7770
   $ cl feedback
@@ -66,6 +77,7 @@ program
   .option('-c, --customer <id>', 'Customer identifier')
   .option('-n, --name <name>', 'Name of person who provided the input')
   .option('-e, --email <email>', 'Email of person who provided the input')
+  .option('-f, --file <path>', 'Read content from file')
   .option('--interactive', 'Fill in details step by step')
   .option('-w, --wait', 'Wait until processing is completed')
   .option('--json', 'Output in JSON format')

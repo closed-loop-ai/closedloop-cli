@@ -15,6 +15,7 @@ export interface CommandOptions {
   customer?: string;
   name?: string;
   email?: string;
+  file?: string;
   // Feedback options
   status?: string;
   search?: string;
